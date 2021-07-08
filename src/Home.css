@@ -1,0 +1,30 @@
+.home {
+    display: flex;
+    margin: 0 0;
+    justify-content: center;
+}
+
+.home .container {
+    width: 100%;
+}
+
+.home .home_img {
+    min-width: 100%;
+    max-width: 100%;
+    z-index: -1;
+    margin-bottom: -150px;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+.home .home_row {
+    margin-top: 100px;
+}
+
+@media screen and (min-width: 992px) {
+    .home .home_row {
+        margin-top: 0;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+    }
+}
