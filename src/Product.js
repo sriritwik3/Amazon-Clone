@@ -1,5 +1,6 @@
 import React from "react";
 import "./Product.css";
+import { useGlobalContext } from "./Context";
 
 const Product = ({ product }) => {
   const { image, title, category, price } = product;
@@ -7,6 +8,14 @@ const Product = ({ product }) => {
   const rating = new Array(random).fill(1);
   const remaining = new Array(5 - random).fill(1);
   const ratings = Math.floor(Math.random() * 1000);
+  const [{ cart }, dispatch] = useGlobalContext();
+  const addToCart = () => {
+    console.log(cart);
+    dispatch({
+      type: "ADD_TO_CART",
+      product,
+    });
+  };
   return (
     <>
       <div className="product">
@@ -23,24 +32,26 @@ const Product = ({ product }) => {
             {price}
           </div>
           <div className="product_rating">
-            {rating.map((i, index) => {
+            {rating.map((_, index) => {
               return (
                 <span key={index} className="styled_star">
                   &#9733;
                 </span>
               );
             })}
-            {remaining.map((i, index) => {
+            {remaining.map((_, index) => {
               return (
                 <span key={index} className="styled_star">
                   &#9734;
                 </span>
               );
             })}
-            <span className="total_ratings"> {ratings}</span>
+            <span className="total_ratings"> {random === 0 ? 0 : ratings}</span>
           </div>
         </div>
-        <button className="product_add">Add to Cart</button>
+        <button className="product_add" onClick={addToCart}>
+          Add to Cart
+        </button>
       </div>
     </>
   );
