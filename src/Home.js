@@ -17,6 +17,14 @@ const Home = () => {
   useEffect(() => {
     fetchProductDetails();
   }, []);
+  for (let i = 0; i < products.length; i++) {
+    const random = Math.floor(Math.random() * 5);
+    products[i].rating = random;
+    if (random === 0) products[i].votes = 0;
+    else {
+      products[i].votes = Math.floor(Math.random() * 1000);
+    }
+  }
   return (
     <>
       <Header></Header>

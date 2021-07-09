@@ -3,11 +3,9 @@ import "./Product.css";
 import { useGlobalContext } from "./Context";
 
 const Product = ({ product }) => {
-  const { image, title, category, price } = product;
-  const random = Math.floor(Math.random() * 5);
-  const rating = new Array(random).fill(1);
-  const remaining = new Array(5 - random).fill(1);
-  const ratings = Math.floor(Math.random() * 1000);
+  const { image, title, category, price, votes, rating } = product;
+  const filled = new Array(rating).fill(1);
+  const remaining = new Array(5 - rating).fill(1);
   const [{ cart }, dispatch] = useGlobalContext();
   const addToCart = () => {
     console.log(cart);
@@ -32,7 +30,7 @@ const Product = ({ product }) => {
             {price}
           </div>
           <div className="product_rating">
-            {rating.map((_, index) => {
+            {filled.map((_, index) => {
               return (
                 <span key={index} className="styled_star">
                   &#9733;
@@ -46,7 +44,7 @@ const Product = ({ product }) => {
                 </span>
               );
             })}
-            <span className="total_ratings"> {random === 0 ? 0 : ratings}</span>
+            <span className="total_ratings"> {votes}</span>
           </div>
         </div>
         <button className="product_add" onClick={addToCart}>
