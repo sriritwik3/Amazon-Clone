@@ -13,6 +13,11 @@ export const Reducer = (state, action) => {
                 ...state,
                 cart: [...state.cart, action.product],
             };
+        case "SET_USER":
+            return {
+                ...state,
+                user: action.user,
+            };
         default:
             return state;
     }

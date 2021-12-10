@@ -26,7 +26,7 @@ const Product = ({ product }) => {
           </div>
           <p className="product_title">{title}</p>
           <div className="product_price">
-            <span className="product_rupee">&#x20B9;</span>
+            <span className="product_rupee">&#36;</span>
             {price}
           </div>
           <div className="product_rating">
